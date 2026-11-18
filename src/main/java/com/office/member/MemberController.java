@@ -1,5 +1,6 @@
 package com.office.member;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,16 +13,14 @@ import java.io.IOException;
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+
     public MemberController() {
         super();
-        
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String requestURI = request.getRequestURI();
+		String requestURI = request.getRequestURI(); 
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		
@@ -33,19 +32,16 @@ public class MemberController extends HttpServlet {
 			
 			nextPage = "view/member/signup_form.jsp";
 			
-		    break;
-	
-		
-	}
+			break;
+
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 		
 	}
-		
-		
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
