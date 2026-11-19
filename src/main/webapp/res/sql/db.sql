@@ -34,3 +34,7 @@ values('seari2', '1111', 'seari@gmail.com', '010-1234-7777');
 set @@auto_increment_increment = 3;
 
 drop table tbl_member;
+
+select count(*) cnt from tbl_member where memId = 'gildong';
+
+delete from tbl_member;

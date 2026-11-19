@@ -3,10 +3,41 @@ package com.office.member;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public interface MemberServiceForDW {
+public class MemberServiceForDW implements IMemberService {
 
-	public int signup(HttpServletRequest request, HttpServletResponse response);
+	final private IMemberDao iMemberDao;
 	
-	public int signin(HttpServletRequest request, HttpServletResponse response);
+	public MemberServiceForDW(IMemberDao iMemberDao) {
+		this.iMemberDao = iMemberDao;
+		
+	}
+
+	@Override
+	public int signup(HttpServletRequest request, HttpServletResponse response) {
+		
+		String memId = request.getParameter("memId");
+		String memPw = request.getParameter("memPw");
+		String memMail = request.getParameter("memMail");
+		String memPhone = request.getParameter("memPhone");
+		
+		MemberDto memberDto = new MemberDto(memId, memPw, memMail, memPhone);
+		
+		boolean isMember = iMemberDao.isMember(memId);
+		int result = 0;
+		if (!isMember) {
+			result = iMemberDao.insertNewMember(memberDto);
+		}
+		
+		
+		return 0;
+	}
+
+	@Override
+	public int signin(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 	
 }
