@@ -21,7 +21,7 @@
 		
 			
 			<form 
-			    action="<%= request.getContextPath() %>/signup_cofirm.mem"
+			    action="<%= request.getContextPath() %>/signup_confirm.mem"
 			    name="signup_form"
 			    method="POST">
 			

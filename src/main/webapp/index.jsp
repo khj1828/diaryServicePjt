@@ -14,7 +14,7 @@
 	<jsp:include page="./view/include/nav.jsp" />
 	
 	<article>
-		<div>
+		<div class="article_wrap">
 			This page is HOME.
 		</div>
 	</article>
